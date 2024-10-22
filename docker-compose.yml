@@ -1,0 +1,7 @@
+services:
+  uniqueizer:
+    build:
+      context: .
+    container_name: uniqueizer-app
+    volumes:
+      - .:/uniqueizer

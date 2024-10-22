@@ -1,0 +1,7 @@
+.mypy_cache/
+.venv/
+__pycache__/
+archive/
+video/
+.notes.txt
+.dockerignore

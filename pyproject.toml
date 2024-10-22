@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "uniqueizer"
+version = "0.1.0"
+description = ""
+authors = ["kirill43qw <default11user@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+instaloader = "^4.13.1"
+requests = "^2.32.3"
+dropbox = "^12.0.2"
+wheel = "^0.44.0"
+rich = "^13.9.2"
+python-dotenv = "^1.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.28.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
