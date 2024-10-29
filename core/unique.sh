@@ -3,7 +3,6 @@
 INPUT_FILE="$1" 
 OUTPUT_FOLDER="$2"
 OUTPUT_FILE="$3"
-TIME_IN_METADATA="$4"
 
 
 ffmpeg -i "$INPUT_FILE" -i static/logo.png -c:v libx264 -crf 10 -fps_mode vfr -filter_complex \
@@ -26,7 +25,7 @@ ffmpeg -i "$OUTPUT_FOLDER/result.mp4" -c copy  -map_metadata -1 \
   -brand mp42 -metadata:s:v:0 language=eng -metadata:s:a:0 language=eng \
   "$OUTPUT_FOLDER/finall.mp4"
 
-MP4Box -add "$OUTPUT_FOLDER/finall.mp4" -brand mp42 -ab isom -ab mp42 "$OUTPUT_FOLDER/$OUTPUT_FILE"
+MP4Box -add "$OUTPUT_FOLDER/finall.mp4" -brand mp42 -ab isom -ab mp42 -new "$OUTPUT_FOLDER/$OUTPUT_FILE"
 
 
 rm "$OUTPUT_FOLDER/result.mp4" "$OUTPUT_FOLDER/finall.mp4"
