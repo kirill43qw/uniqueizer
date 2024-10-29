@@ -31,9 +31,8 @@ console.print(
 load_dotenv()
 
 token_dbx = os.getenv("DBX_TOKEN")
-if not token_dbx:
-    token_dbx = input("Enter your dbx_token or skip: ").strip()
-time_in_metadata = str(os.getenv("TIME_IN_METADATA "))
+# if not token_dbx:
+#     token_dbx = input("Enter your dbx_token or skip: ").strip()
 
 
 if token_dbx:
@@ -83,18 +82,21 @@ with Progress(
                 "IMG_" + "".join(map(str, [randint(0, 9) for _ in range(4)])) + ".mp4"
             )
 
-            subprocess.run(
-                [
-                    "core/unique.sh",
-                    input_file,
-                    output_folder,
-                    output_file,
-                    time_in_metadata,
-                ],
-                check=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-            )
+            try:
+                result = subprocess.run(
+                    [
+                        "core/unique.sh",
+                        input_file,
+                        output_folder,
+                        output_file,
+                    ],
+                    check=True,
+                    stderr=subprocess.PIPE,
+                )
+            except subprocess.CalledProcessError as err:
+                console.print(
+                    f"[bold red]Script errors: {err.stderr.decode()}[/bold red]"
+                )
             os.remove(f"{input_file}")
 
             if token_dbx:
