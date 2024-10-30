@@ -97,7 +97,6 @@ with Progress(
                 console.print(
                     f"[bold red]Script errors: {err.stderr.decode()}[/bold red]"
                 )
-            os.remove(f"{input_file}")
 
             if token_dbx:
                 upload_to_dropbox(dbx, output_folder, output_file)

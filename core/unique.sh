@@ -25,10 +25,9 @@ ffmpeg -i "$OUTPUT_FOLDER/result.mp4" -c copy  -map_metadata -1 \
   -brand mp42 -metadata:s:v:0 language=eng -metadata:s:a:0 language=eng \
   "$OUTPUT_FOLDER/finall.mp4"
 
+
 MP4Box -add "$OUTPUT_FOLDER/finall.mp4" -brand mp42 -ab isom -ab mp42 -new "$OUTPUT_FOLDER/$OUTPUT_FILE"
 
-
-rm "$OUTPUT_FOLDER/result.mp4" "$OUTPUT_FOLDER/finall.mp4"
 
 DAYS=$(shuf -i 0-10 -n 1)
 HOURS=$(shuf -i 0-23 -n 1)
@@ -43,3 +42,6 @@ exiftool -overwrite_original \
   -QuickTime:AndroidVersion='13' -QuickTime:PlayMode='SEQ_PLAY' \
   -QuickTime:Author='Samsung SM-A515F' -Composite:Rotation=90 \
   "$OUTPUT_FOLDER/$OUTPUT_FILE"
+
+
+rm "$OUTPUT_FOLDER/result.mp4" "$OUTPUT_FOLDER/finall.mp4" "$INPUT_FILE"
