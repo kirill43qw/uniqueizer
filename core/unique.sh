@@ -29,4 +29,15 @@ ffmpeg -i "$OUTPUT_FOLDER/result.mp4" -c copy  -map_metadata -1 \
 MP4Box -add "$OUTPUT_FOLDER/finall.mp4" -brand mp42 -ab isom -ab mp42 -new "$OUTPUT_FOLDER/$OUTPUT_FILE"
 
 
+DAYS=$(shuf -i 0-10 -n 1)
+HOURS=$(shuf -i 0-23 -n 1)
+MINUTES=$(shuf -i 0-59 -n 1)
+SECONDS=$(shuf -i 0-59 -n 1)
+CREATE_DATE=$(date -d "$DAYS days ago $HOURS hours ago $MINUTES minutes ago $SECONDS seconds ago" +"%Y-%m-%d %H:%M:%S")
+
+exiftool -overwrite_original -QuickTime:CreateDate="$CREATE_DATE" \
+  -QuickTime:ModifyDate="$CREATE_DATE" -QuickTime:TrackModifyDate="$CREATE_DATE" \
+  -QuickTime:MediaModifyDate="$CREATE_DATE" "$OUTPUT_FOLDER/$OUTPUT_FILE"
+
+
 rm "$OUTPUT_FOLDER/result.mp4" "$OUTPUT_FOLDER/finall.mp4" "$INPUT_FILE"
