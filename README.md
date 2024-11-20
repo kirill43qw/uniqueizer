@@ -22,6 +22,17 @@
 
 * `git clone 'https://github.com/kirill43qw/uniqueizer'`
 * `cd uniqueizer`
-* `docker compose up -d --build` - запуск скрипта в docker контейнере
+* `docker comеpose up -d --build` - запуск скрипта в docker контейнере
+
+---
+
+## Как использовать
+
+1. Поместите видеофайлы в папку `orig`, если вы хотите обрабатывать локальные файлы.
+2. Если хотите скачать видео, добавьте ссылки на Instagram или TikTok в файл `urls.txt`.
+3. Запустите процесс обработки видео с помощью Docker:
+   ```bash
+   docker compose up -d
+4. Если вы хотети, чтобы видео отправилось в Dropbox хранилище, добавьте dropbox_api token в файл .env
 
 ---
